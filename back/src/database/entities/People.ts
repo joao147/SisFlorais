@@ -1,10 +1,10 @@
 import { Column, PrimaryGeneratedColumn, Entity, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
 
-import Family from './Family';
-import DirectContact from './entitiesComponents/DirectContact';
+import Families from './Families';
+import DirectContacts from './entitiesComponents/DirectContacts';
 
-@Entity('Person')
-export default class Person{
+@Entity('People')
+export default class People{
 
   @PrimaryGeneratedColumn('increment')
   id: number;
@@ -30,10 +30,10 @@ export default class Person{
   @Column({type:'character', length:10})
   birthDate: string;
 
-  @ManyToOne(type => Family, family => family.people, { nullable:true })
+  @ManyToOne(type => Families, families => families.people, { nullable:true })
   @JoinColumn({name:'familyID'})
-  family: Family;
+  families: Families;
 
-  @OneToMany(type => DirectContact, directContact => directContact.person,{ nullable:true })
-  directContacts: DirectContact[];
+  @OneToMany(type => DirectContacts, directContacts => directContacts.person,{ nullable:true })
+  directContacts: DirectContacts[];
 }

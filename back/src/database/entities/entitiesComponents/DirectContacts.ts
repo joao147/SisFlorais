@@ -1,8 +1,8 @@
 import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
-import Person from '../Person';
+import People from '../People';
 
-@Entity('DirectContact')
-export default class DirectContact{
+@Entity('DirectContacts')
+export default class DirectContacts{
 
   @PrimaryGeneratedColumn('increment')
   id: number;
@@ -16,7 +16,7 @@ export default class DirectContact{
   @Column({type:'character', length:20, nullable: true, default: null})
   optinalContact: string;
 
-  @ManyToOne(type => Person, person=> person.directContacts)
-  @JoinColumn({name:'personID'})
-  person: Person;
+  @ManyToOne(type => People, people=> people.directContacts)
+  @JoinColumn({name:'peopleID'})
+  person: People;
 }

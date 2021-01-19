@@ -1,9 +1,9 @@
 import { Column, PrimaryGeneratedColumn, Entity, ManyToOne, CreateDateColumn } from 'typeorm';
 
-import Floral from './Floral'
+import Floral from './Florais'
 
-@Entity('FloralPurchaseHistory')
-export default class FloralPurchaseHistory{
+@Entity('FloralPurchases')
+export default class FloralPurchases{
 
   @PrimaryGeneratedColumn('increment')
   id: number;
@@ -12,7 +12,7 @@ export default class FloralPurchaseHistory{
   purchaseDate: Date;
 
   @Column({type:'decimal', precision: 10, scale: 2})
-  price: number;
+  cost: number;
 
   @ManyToOne(type => Floral, floral => floral.floralPurchaseHistory)
   floral: Floral;

@@ -1,8 +1,8 @@
 import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import Person from './Person';
+import People from './People';
 
-@Entity('Family')
-export default class Family{
+@Entity('Families')
+export default class Families{
 
   @PrimaryGeneratedColumn('increment')
   id:number;
@@ -10,6 +10,6 @@ export default class Family{
   @Column({type:'character', length:100})
   keyPerson: string;
 
-  @OneToMany(type => Person, person => person.family)
-  people: Person[];
+  @OneToMany(type => People, people => people.families)
+  people: People[];
 }

@@ -1,9 +1,9 @@
 import { Column, PrimaryGeneratedColumn, Entity, ManyToOne, CreateDateColumn } from 'typeorm';
 
-import GeneralStock from './GeneralStock'
+import GeneralStocks from './GeneralStocks'
 
-@Entity('GeneralStockPurchaseHistory')
-export default class GeneralStockPurchaseHistory{
+@Entity('GeneralStockPurchases')
+export default class GeneralStockPurchases{
 
   @PrimaryGeneratedColumn('increment')
   id: number;
@@ -15,8 +15,8 @@ export default class GeneralStockPurchaseHistory{
   quantity: number;
   
   @Column({type:'decimal', precision: 10, scale: 2})
-  price: number;
+  cost: number;
 
-  @ManyToOne(type => GeneralStock, generalStock => generalStock.generalStockPurchaseHistory)
-  generalStock: GeneralStock;
+  @ManyToOne(type => GeneralStocks, generalStocks => generalStocks.generalStockPurchases)
+  generalStocks: GeneralStocks;
 }
