@@ -5,9 +5,9 @@ module.exports = {
      "./src/entities/**/*.ts"
   ],
   "migrations": [
-     "./src/database/migration/*.ts"
+     "./src/database/migrations/*.ts"
   ],
   "cli": {
-     "migrationsDir":"./src/database/migration"
+     "migrationsDir":"./src/database/migrations"
   }
 }

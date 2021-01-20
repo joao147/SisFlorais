@@ -7,9 +7,9 @@ export default class Families{
   @PrimaryGeneratedColumn('increment')
   id:number;
 
-  @Column({type:'character', length:100})
+  @Column({type:'character', length:100, unique: true})
   keyPerson: string;
 
-  @OneToMany(type => People, people => people.families)
+  @OneToMany(type => People, people => people.family)
   people: People[];
 }

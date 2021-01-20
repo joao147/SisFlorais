@@ -1,6 +1,6 @@
 import { Column, PrimaryGeneratedColumn, Entity, OneToMany } from 'typeorm';
 
-import GeneralStockPurchases from './GeneralStockPurchases'
+import Purchases from './Purchases'
 
 @Entity('GeneralStocks')
 export default class GeneralStocks{
@@ -14,6 +14,6 @@ export default class GeneralStocks{
   @Column({type:'integer'})
   quantity: number;
 
-  @OneToMany(type => GeneralStockPurchases, generalStockPurchases => generalStockPurchases.generalStocks)
-  generalStockPurchases: GeneralStockPurchases[]
+  @OneToMany(type => Purchases, purchases => purchases.generalStocks)
+  purchases: Purchases[];
 }

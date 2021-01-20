@@ -1,26 +1,26 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 
 import Florais from '../Florais';
-import Prescriptions from './prescriptions';
+import Prescriptions from './Prescriptions';
 
 @Entity('Essences')
 export default class Essences{
 
   @PrimaryGeneratedColumn('increment')
-  id: number;
+  id!: number;
 
   @Column()
-  prescriptionId: number;
+  prescriptionId!: number;
 
   @Column()
-  floralId: number;
+  floralId!: number;
 
   @Column({type:'smallint'})
-  gotas: number;
+  gotas!: number;
 
-  @ManyToOne(type => Prescriptions, presciption => presciption.essences)
-  prescription: Prescriptions;
+  @ManyToOne(type => Prescriptions, presciption => presciption.essences, { onDelete: 'CASCADE', onUpdate: 'CASCADE' })
+  prescription!: Prescriptions;
 
-  @ManyToOne(type => Florais, florais => florais.floral)
-  essence: Florais;
+  @ManyToOne(type => Florais, florais => florais.essences, { onDelete: 'CASCADE', onUpdate: 'CASCADE' })
+  essence!: Florais;
 }
