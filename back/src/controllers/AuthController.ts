@@ -38,5 +38,21 @@ export default {
   },
   async create(request: Request, response: Response){
 
+    const { email, password } = request.body;
+
+    const profileRepository = getRepository(Profile);
+
+    const emailExist = await profileRepository.findOne(email);
+
+    if(!emailExist){
+      return response.sendStatus(402)
+    }
+
+    const newPeofile = profileRepository.create({email, password});
+
+    await profileRepository.save(newPeofile);
+
+    return response.sendStatus(200).json(newPeofile);
+
   }
 }
